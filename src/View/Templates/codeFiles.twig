@@ -1,0 +1,42 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <ul id="file-list">
+                {% for file in files %}
+                <li><a href="code/{{ file|replace({'/': '_'})}}.json">{{ file }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-sm-9">
+            <pre>
+                <code id="source-code" class="php"></code>
+            </pre>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="assets/scripts/vendor.js"></script>
+<script>
+$(document).ready(function(){
+    $('#file-list a').click(function(e) {
+        e.preventDefault();
+
+        var destination = $(this).attr('href'),
+            $sourceCode = $('#source-code');
+
+        $.getJSON(destination, {}, function(data) {
+            data = hljs.highlight('php', data.lines);
+            console.log(data);
+
+            $sourceCode.html(data);
+        });
+    });
+});
+</script>
+{% endblock %}

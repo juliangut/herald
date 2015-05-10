@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <title>Herald - {{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+
+    {% block styles %}
+    <link rel="stylesheet" href="assets/styles/vendor.css">
+    <link rel="stylesheet" href="assets/styles/herald.css">
+    {% endblock %}
+</head>
+
+<body>
+    {% block navigation %}
+    <nav id="nav-main" class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Herald</a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Code report</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {% block scripts %}
+    <script src="assets/scripts/vendor.js"></script>
+    {% endblock %}
+</body>
